@@ -1,0 +1,137 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(223, 223, 223);
+}
+header {
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(13, 72, 180);
+    color: #fff;
+}
+nav {
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: rgb(98, 153, 255);
+}
+
+.dropdown-item:hover {
+    color: #fff;
+    background-color: rgb(13, 72, 180);
+}
+
+.navbar-toggler {
+    border-color: #fff;
+}
+
+.brand {
+    flex: 1;
+}
+
+.navigations {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigations .btn {
+    width: 100px;
+    border-color: #fff;
+    color: #fff;
+}
+
+.landing {
+    height: 90vh;
+    position: relative;
+}
+
+.landing h2 {
+    text-align: center;
+}
+
+.background {
+    position: absolute;
+    height: 95%;
+    width: 80%;
+    object-fit: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loginModal .modal-dialog {
+    width: 350px;
+}
+#registrationModal .modal-dialog {
+    width: 350px;
+}
+
+.modal-header {
+    background-color: rgb(13, 72, 180);
+    color: #fff;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-footer {
+    width: 90%;
+    margin: 0 auto;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginModal .modal-body,
+#registrationModal .modal-body {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#loginModal .modal-body {
+    height: 250px;
+}
+
+#registrationModal .modal-body {
+    height: 450px;
+}
+
+.btn-login {
+    width: 100%;
+}
+
+footer {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(44, 92, 182, 0.377);
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

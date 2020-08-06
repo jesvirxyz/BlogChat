@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Profile</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/home.css" />
+    </head>
+    <body>
+        <%- include('../layouts/header') %>
+
+        <div class="landing">
+            <div class="post-area col-sm-10">
+                <div class="card-post pt-5">
+                    <div class="container">
+                        <form action="/post/profile_post" method="POST" autocomplete="off">
+                            <div class="form-group">
+                                <label for="description">Create Post</label>
+                                <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="whoPosted" name="whoPosted" value="<%= user.firstname %> <%= user.lastname %>" hidden />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="postedBy" name="postedBy" value="<%= user.id %>" hidden />
+                            </div>
+                            <div class="row">
+                                <div class="col-auto ml-auto">
+                                    <button type="submit" class="btn btn-primary">Post</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="container pt-5">
+                        <h3>My Blogs</h3>
+
+                        <% blogs.forEach(blog => { %>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title container">
+                                            <div class="row">
+                                                <h5 class="mb-1"><%= blog.name %></h5>
+                                                <% if(blog.postedBy == user.id) {%>
+                                                <div class="col-auto ml-auto">
+                                                    <form action="/post/profile/<%= blog.id %>?_method=DELETE" method="POST">
+                                                        <button type="submit" class="delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <p style="font-size: 13px;" class="card- text-muted mb-2">
+                                            <%= blog.createdAt.toDateString() %>, <%= blog.createdAt.toLocaleTimeString() %>
+                                        </p>
+                                        <p hidden><%= blog.postedBy %></p>
+
+                                        <p class="card-text"><%= blog.description %></p>
+                                        <div class="pt-3">
+                                            <div class="btn-group" role="group">
+                                                <a type="button" class="btn btn-outline-secondary reaction-text"
+                                                    ><i class="far fa-thumbs-up"></i> Like</a
+                                                >
+                                                <a type="button" class="btn btn-outline-secondary reaction-text"
+                                                    ><i class="far fa-comment-alt"></i> Comment</a
+                                                >
+                                                <butaton type="button" class="btn btn-outline-secondary reaction-text"
+                                                    ><i class="far fa-share-square"></i> Share</butaton
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-area col-sm-2">
+                <div class="card-profile"></div>
+            </div>
+        </div>
+
+        <%- include('../layouts/footer') %>
+
+        <script src="https://kit.fontawesome.com/28296022b0.js" crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
